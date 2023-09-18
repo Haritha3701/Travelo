@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register page</title>
+</head>
+<body background="{% static 'images/reg.jpg' %}" style="background-size:cover; background-repeat:no-repeat; backdrop-filter: blur(2px);">
+<div style="text-align: center; color: black; margin-top:150px;">
+    <h1>Registration</h1>
+</div>
+<div style="text-align:center">
+    <form action="{% url 'registerpage' %}", method="post">
+        {% csrf_token %}
+        <input style="padding:5px; margin:10px; margin-top:50px; width:300px; height: 20px;"
+               type="text" placeholder="Enter your Username" name="uname" required>
+        <br>
+        <input style="padding:5px; margin:10px; width:300px; height: 20px;"
+               type="text" placeholder="Enter your First name" name="fname">
+        <br>
+        <input style="padding:5px; margin:10px; width:300px; height: 20px;"
+               type="text" placeholder="Enter your Last name" name="lname">
+        <br>
+        <input style="padding:5px; margin:10px; width:300px; height: 20px;"
+               type="email" placeholder="Enter your Email Id" name="e_mail" required>
+        <br>
+        <input style="padding:5px; margin:10px; width:300px; height: 20px;"
+               type="password" placeholder="Password" name="password" required>
+        <br>
+        <input style="padding:5px; margin:10px; width:300px; height: 20px;"
+               type="password" placeholder="Confirm password" name="conf_password">
+        <br>
+        <input style="padding:5px; margin:20px; width:150px; height:45px; font-weight: bold;font-size:15px; background-color:#181818;border:none;color:white;"
+               type="submit">
+
+    </form>
+</div>
+{% for msg in messages %}
+<p style="color:red;font-weight:bold; text-align:center;">{{msg}}</p>
+{% endfor %}
+
+</body>
+</html>

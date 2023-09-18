@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login page</title>
+</head>
+<body background="{% static 'images/log.jpg' %}" style="background-size:cover; background-repeat:no-repeat;">
+<div style="text-align: right; color: white; margin-top:130px; margin-right:300px;">
+  <h1>
+    Login
+  </h1>
+</div>
+<div style="text-align:right; margin-right:170px;">
+  <form action="{% url 'loginpage' %}" method="post">
+    {% csrf_token %}
+    <input style="padding:5px; margin:10px; margin-top:50px; width:300px; height: 25px;"
+           type="text" placeholder="Username" name="uname" required>
+    <br>
+    <input style="padding:5px; margin:10px; width:300px; height: 25px;"
+           type="password" placeholder="Password" name="password" required>
+    <br>
+    <input style="padding:5px; margin:20px; margin-right: 90px; width:150px; height:45px; font-weight: bold;font-size:15px; background-color:#181818;border:none;color:white;"
+           type="submit" value="Login">
+
+  </form>
+</div>
+{% for msg in messages %}
+<p style="color:red;font-weight:bold; text-align:right;margin-right:230px">{{msg}}</p>
+{% endfor %}
+
+</body>
+</html>
